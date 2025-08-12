@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Carpeta de importaciones de Godot
+.import/
+
+# Config de exportación 
+export_presets.cfg
+
+# Archivos binarios y de compilación por si acaso xd
+bin/
+obj/
+
+# VSCode
+.vscode/
+
+# Archivos temporales de sistema
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

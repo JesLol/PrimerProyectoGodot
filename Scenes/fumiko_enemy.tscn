@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4ae3pwsloht8"]
+
+[ext_resource type="Script" uid="uid://dv5h6pu8q8u2x" path="res://FumikoEnemy.cs" id="1_duyfs"]
+[ext_resource type="Texture2D" uid="uid://bgcq381appv8h" path="res://World/Tilemap/Fumiko-Running.png" id="2_k5s3v"]
+[ext_resource type="Texture2D" uid="uid://t0jte8tmc2cr" path="res://World/Tilemap/Fumiko-Walking.png" id="3_dw4wn"]
+[ext_resource type="Texture2D" uid="uid://btvbgny4gtlm2" path="res://World/Tilemap/Fumiko-IDLE.png" id="4_e8ne2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqci3"]
+size = Vector2(16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bk3j"]
+atlas = ExtResource("2_k5s3v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dctlm"]
+atlas = ExtResource("2_k5s3v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhbb2"]
+atlas = ExtResource("2_k5s3v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dsg4"]
+atlas = ExtResource("3_dw4wn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3icfm"]
+atlas = ExtResource("3_dw4wn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4pmt"]
+atlas = ExtResource("3_dw4wn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c705f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bk3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dctlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhbb2")
+}],
+"loop": true,
+"name": &"fumiko-running",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dsg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3icfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4pmt")
+}],
+"loop": true,
+"name": &"fumiko-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e8ne2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="FumikoEnemy" type="CharacterBody2D"]
+script = ExtResource("1_duyfs")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_lqci3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c705f")
+animation = &"fumiko-running"
+frame_progress = 0.573111
+
+[node name="FloorDetector" type="RayCast2D" parent="."]
+target_position = Vector2(25, 25)

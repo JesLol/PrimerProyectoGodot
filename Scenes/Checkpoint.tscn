@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://b18fj1ylnedi8"]
+
+[ext_resource type="Script" uid="uid://cwk0qhpcpppqg" path="res://Scenes/Checkpoint.cs" id="1_i3j2t"]
+[ext_resource type="Texture2D" uid="uid://cu1c1l8sr7oey" path="res://World/Tilemap/WhiteFlag.png" id="1_wp6dl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3j2t"]
+atlas = ExtResource("1_wp6dl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14q6d"]
+atlas = ExtResource("1_wp6dl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d41ab"]
+atlas = ExtResource("1_wp6dl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyhkm"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3j2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14q6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d41ab")
+}],
+"loop": true,
+"name": &"animated-flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oj4b"]
+size = Vector2(26, 30)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_i3j2t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vyhkm")
+animation = &"animated-flag"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7oj4b")

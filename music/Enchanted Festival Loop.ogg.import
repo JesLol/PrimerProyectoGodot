@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://os8fntmscmsq"
+path="res://.godot/imported/Enchanted Festival Loop.ogg-0db3129dc619f289bf9fe3df2fe893ea.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Enchanted Festival Loop.ogg"
+dest_files=["res://.godot/imported/Enchanted Festival Loop.ogg-0db3129dc619f289bf9fe3df2fe893ea.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

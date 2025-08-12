@@ -1,0 +1,169 @@
+[gd_scene load_steps=22 format=3 uid="uid://bqx7d5svu3o0w"]
+
+[ext_resource type="Script" uid="uid://wu4bx8xk75cf" path="res://FumikoPlayer.cs" id="1_yttw5"]
+[ext_resource type="Texture2D" uid="uid://budmjeln4d0hx" path="res://World/Tilemap/Fumiko-Dead.png" id="2_75he6"]
+[ext_resource type="Texture2D" uid="uid://canppwaq861br" path="res://World/Tilemap/Fumiko-Falling.png" id="2_q3dd3"]
+[ext_resource type="Texture2D" uid="uid://bwc12so5cj5ot" path="res://World/Tilemap/Fumiko-Dancing.png" id="2_tsqhx"]
+[ext_resource type="Texture2D" uid="uid://btvbgny4gtlm2" path="res://World/Tilemap/Fumiko-IDLE.png" id="3_75he6"]
+[ext_resource type="Texture2D" uid="uid://dabqonevbhmgj" path="res://World/Tilemap/Fumiko-Jump-Up.png" id="4_tsqhx"]
+[ext_resource type="Texture2D" uid="uid://bogqby62tpteo" path="res://World/Tilemap/Fumiko-Jump-Start.png" id="5_t5kia"]
+[ext_resource type="Texture2D" uid="uid://bgcq381appv8h" path="res://World/Tilemap/Fumiko-Running.png" id="6_kjrsa"]
+[ext_resource type="Texture2D" uid="uid://t0jte8tmc2cr" path="res://World/Tilemap/Fumiko-Walking.png" id="7_ad8ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5kia"]
+atlas = ExtResource("2_tsqhx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjrsa"]
+atlas = ExtResource("2_tsqhx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad8ub"]
+atlas = ExtResource("2_tsqhx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iudg"]
+atlas = ExtResource("2_tsqhx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6ffv"]
+atlas = ExtResource("6_kjrsa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqfym"]
+atlas = ExtResource("6_kjrsa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lxb2"]
+atlas = ExtResource("6_kjrsa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5am5"]
+atlas = ExtResource("7_ad8ub")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooe7u"]
+atlas = ExtResource("7_ad8ub")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i85si"]
+atlas = ExtResource("7_ad8ub")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2iudg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5kia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad8ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iudg")
+}],
+"loop": true,
+"name": &"dancing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_75he6")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q3dd3")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_75he6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tsqhx")
+}],
+"loop": true,
+"name": &"jump-up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t5kia")
+}],
+"loop": true,
+"name": &"jump_start",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q3dd3")
+}],
+"loop": true,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6ffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqfym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lxb2")
+}],
+"loop": true,
+"name": &"run",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5am5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooe7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i85si")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5afmb"]
+size = Vector2(14, 30)
+
+[node name="FumikoPlayer" type="CharacterBody2D"]
+script = ExtResource("1_yttw5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2iudg")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5afmb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1904
+limit_bottom = 270
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

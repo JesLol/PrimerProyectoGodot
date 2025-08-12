@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://0vixfmt4wbew"]
+
+[ext_resource type="Texture2D" uid="uid://dmt1qwsnh45qh" path="res://World/Tilemap/Coins.png" id="1_5j1kh"]
+[ext_resource type="Script" uid="uid://cgo7odsq7tmhf" path="res://Scenes/ScoreCanvasLayer.cs" id="1_m0stp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0stp"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka816"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sadi"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbe6s"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p15q"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmca"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yhud"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwno0"]
+atlas = ExtResource("1_5j1kh")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a75n4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0stp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka816")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sadi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbe6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p15q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yhud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwno0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ScoreCanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_m0stp")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 406.0
+offset_right = 460.0
+offset_bottom = 23.0
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(11, 11)
+sprite_frames = SubResource("SpriteFrames_a75n4")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 22.0
+text = ": 0"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt0t1kyl1gst8"]
+
+[ext_resource type="Texture2D" uid="uid://snqhvlfuk7d4" path="res://World/Tilemap/tile_grass_64.png" id="1_ys6oq"]
+[ext_resource type="Texture2D" uid="uid://s6v3iccv1xjm" path="res://World/Tilemap/tile_water_12_64.png" id="2_n3n4p"]
+[ext_resource type="Texture2D" uid="uid://bbmpfwvwa3e0k" path="res://World/Tilemap/tile_water_13_64.png" id="3_w7adj"]
+[ext_resource type="Texture2D" uid="uid://bajhyl61mgkqu" path="res://World/Tilemap/tile_water_14_64.png" id="4_08vws"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TileGrass64" type="Sprite2D" parent="."]
+position = Vector2(549, 268)
+texture = ExtResource("1_ys6oq")
+
+[node name="TileWater1264" type="Sprite2D" parent="."]
+position = Vector2(549, 269)
+texture = ExtResource("2_n3n4p")
+
+[node name="TileWater1364" type="Sprite2D" parent="."]
+position = Vector2(552, 266)
+texture = ExtResource("3_w7adj")
+
+[node name="TileWater1464" type="Sprite2D" parent="."]
+position = Vector2(553, 265)
+texture = ExtResource("4_08vws")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://kawujseyelof"]
+
+[ext_resource type="Script" uid="uid://cxshydwelooht" path="res://PauseCanvasLayer.cs" id="1_xbfc2"]
+
+[node name="PauseCanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xbfc2")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 460.0
+offset_bottom = 270.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 96.0
+offset_right = 304.0
+offset_bottom = 162.0
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Continuar"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="ContinuePressedBtn"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="ExitPressedButton"]
