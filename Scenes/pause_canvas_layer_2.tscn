@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ybdubgsw38t"]
+
+[ext_resource type="Script" uid="uid://dj0bxavy4eic4" path="res://VolumeController.cs" id="1_k3ubk"]
+[ext_resource type="Script" uid="uid://bgxgh0vx7ysoq" path="res://Scenes/PauseCanvasLayer2.cs" id="1_tj1ee"]
+
+[node name="PauseCanvasLayer2" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_tj1ee")
+metadata/_edit_vertical_guides_ = [240.0, 160.0, 320.0]
+metadata/_edit_horizontal_guides_ = [128.0]
+
+[node name="MainPause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPause"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 66.0
+offset_right = 320.0
+offset_bottom = 202.0
+
+[node name="Continuar" type="Button" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+text = "Continuar"
+
+[node name="Configuracion" type="Button" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+text = "Configuracion"
+
+[node name="Controles" type="Button" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+text = "Controles
+"
+
+[node name="Salir" type="Button" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+text = "Salir del juego"
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 192.0
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Musica:"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Settings/VBoxContainer"]
+layout_mode = 2
+step = 0.01
+script = ExtResource("1_k3ubk")
+
+[node name="Label2" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "SFX:"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Volver atras"
+
+[connection signal="pressed" from="MainPause/VBoxContainer/Continuar" to="." method="ContinuePressedBtn1"]
+[connection signal="pressed" from="MainPause/VBoxContainer/Configuracion" to="." method="OpenConfigButton"]
+[connection signal="pressed" from="MainPause/VBoxContainer/Controles" to="." method="OpenControlsButton"]
+[connection signal="pressed" from="MainPause/VBoxContainer/Salir" to="." method="ExitPressedButton1"]
+[connection signal="pressed" from="Settings/VBoxContainer/Button" to="." method="VolverMenuBtn"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://baothxt7qbcil"]
+[gd_scene load_steps=14 format=4 uid="uid://baothxt7qbcil"]
 
 [ext_resource type="Texture2D" uid="uid://snqhvlfuk7d4" path="res://World/Tilemap/tile_grass_64.png" id="1_0plju"]
 [ext_resource type="Texture2D" uid="uid://gmah3h2g4glk" path="res://World/Tilemap/sheet.png" id="2_ms0wi"]
 [ext_resource type="PackedScene" uid="uid://bqx7d5svu3o0w" path="res://Scenes/fumiko_player.tscn" id="3_ms0wi"]
 [ext_resource type="PackedScene" uid="uid://0vixfmt4wbew" path="res://Scenes/score_canvas_layer.tscn" id="4_5awjf"]
+[ext_resource type="PackedScene" uid="uid://b8ybdubgsw38t" path="res://Scenes/pause_canvas_layer_2.tscn" id="5_n3cqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5awjf"]
 texture = ExtResource("1_0plju")
@@ -397,3 +398,5 @@ tile_set = SubResource("TileSet_au75x")
 position = Vector2(8, 127)
 
 [node name="ScoreCanvasLayer" parent="." instance=ExtResource("4_5awjf")]
+
+[node name="PauseCanvasLayer2" parent="." instance=ExtResource("5_n3cqh")]
