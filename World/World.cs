@@ -56,11 +56,34 @@ public partial class World : Node2D
             {
                 color.A = 1f;
                 fadingOut = false;
-                
+
                 // ¡Aquí es donde cambias la escena!
                 GetTree().ChangeSceneToFile(nextScenePath);
             }
             fadeRect2.Modulate = color;
+        }
+        
+    }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_fullscreen"))
+        {
+            ToggleFullscreen();
+        }
+    }
+    private void ToggleFullscreen()
+    {
+        // Obtiene el objeto Window raíz
+        var window = GetTree().Root.GetWindow();
+
+        // Alterna entre el modo de pantalla completa y de ventana
+        if (window.Mode == Window.ModeEnum.Fullscreen)
+        {
+            window.Mode = Window.ModeEnum.Windowed;
+        }
+        else
+        {
+            window.Mode = Window.ModeEnum.Fullscreen;
         }
     }
 }

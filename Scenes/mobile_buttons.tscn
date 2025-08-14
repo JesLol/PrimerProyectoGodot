@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bre0wmblm3kka"]
+
+[ext_resource type="Script" uid="uid://gorfuxvlk3ey" path="res://Scenes/MobileButtons.cs" id="1_ekpl1"]
+[ext_resource type="Texture2D" uid="uid://y4awh3yb02m5" path="res://World/Tilemap/arrow_basic_w.png" id="2_qssox"]
+[ext_resource type="Texture2D" uid="uid://ceiefsvgwowyv" path="res://World/Tilemap/arrow_basic_w_small.png" id="3_isvle"]
+[ext_resource type="Texture2D" uid="uid://c48stewcdkeyk" path="res://World/Tilemap/arrow_basic_e.png" id="4_ejtm0"]
+[ext_resource type="Texture2D" uid="uid://ce53s0u0lmg2j" path="res://World/Tilemap/arrow_basic_e_small.png" id="5_qds8l"]
+[ext_resource type="Texture2D" uid="uid://desrm8at08jns" path="res://World/Tilemap/arrow_basic_n.png" id="6_fmxjb"]
+[ext_resource type="Texture2D" uid="uid://bjsfvqjqvbxpy" path="res://World/Tilemap/arrow_basic_n_small.png" id="7_k1k4v"]
+[ext_resource type="Texture2D" uid="uid://cat223iqrub38" path="res://World/Tilemap/button_round_depth_gradient.png" id="8_3l56h"]
+
+[node name="MobileButtons" type="CanvasLayer"]
+script = ExtResource("1_ekpl1")
+AlwaysVisible = false
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(32, 216)
+scale = Vector2(0.625, 0.625)
+texture_normal = ExtResource("2_qssox")
+texture_pressed = ExtResource("3_isvle")
+action = "move-left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(104, 216)
+scale = Vector2(0.625, 0.625)
+texture_normal = ExtResource("4_ejtm0")
+texture_pressed = ExtResource("5_qds8l")
+action = "move-right"
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2(384, 200)
+scale = Vector2(0.625, 0.625)
+texture_normal = ExtResource("6_fmxjb")
+texture_pressed = ExtResource("7_k1k4v")
+action = "jump"
+
+[node name="Run" type="TouchScreenButton" parent="."]
+position = Vector2(384, 144)
+scale = Vector2(0.3125, 0.3125)
+texture_normal = ExtResource("8_3l56h")
+action = "run"
+
+[node name="Run2" type="TouchScreenButton" parent="."]
+position = Vector2(32, 64)
+scale = Vector2(0.3125, 0.3125)
+texture_normal = ExtResource("8_3l56h")
+action = "run"

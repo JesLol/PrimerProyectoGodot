@@ -400,3 +400,4 @@ position = Vector2(8, 127)
 [node name="ScoreCanvasLayer" parent="." instance=ExtResource("4_5awjf")]
 
 [node name="PauseCanvasLayer2" parent="." instance=ExtResource("5_n3cqh")]
+visible = false

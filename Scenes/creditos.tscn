@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkddrwcn74dnm"]
+
+[ext_resource type="Script" uid="uid://csjgc6f6tve1g" path="res://Scenes/SalirButton.cs" id="1_eml6v"]
+[ext_resource type="Script" uid="uid://ceo5wnmrn7ayg" path="res://Scenes/Creditos.cs" id="1_ykkye"]
+
+[node name="Creditos" type="Node2D"]
+script = ExtResource("1_ykkye")
+metadata/_edit_vertical_guides_ = [240.0]
+metadata/_edit_horizontal_guides_ = [136.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 488.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 386.0
+offset_bottom = 175.0
+text = "Director: Jesus Cuapio Mendoza
+Programacion: Jesus Cuapio Mendoza
+Arte: Jesus Cuapio Mendoza y otros.
+Musica: Ni idea xd
+Gracias por jugar!"
+horizontal_alignment = 1
+
+[node name="SalirButton" type="Button" parent="."]
+offset_left = 177.0
+offset_top = 192.0
+offset_right = 305.0
+offset_bottom = 223.0
+text = "Volver al menu"
+script = ExtResource("1_eml6v")
+
+[connection signal="pressed" from="SalirButton" to="SalirButton" method="_on_pressed"]

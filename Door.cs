@@ -3,7 +3,7 @@ using System;
 
 public partial class Door : Area2D
 {
-    private string nextScene = "res://Scenes/Level2.tscn";
+    private string nextScene = "res://Scenes/creditos.tscn";
 
     private void OnBodyEntered(Node2D body)
     {
