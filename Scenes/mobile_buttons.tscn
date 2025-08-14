@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bre0wmblm3kka"]
+[gd_scene load_steps=11 format=3 uid="uid://bre0wmblm3kka"]
 
 [ext_resource type="Script" uid="uid://gorfuxvlk3ey" path="res://Scenes/MobileButtons.cs" id="1_ekpl1"]
 [ext_resource type="Texture2D" uid="uid://y4awh3yb02m5" path="res://World/Tilemap/arrow_basic_w.png" id="2_qssox"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://desrm8at08jns" path="res://World/Tilemap/arrow_basic_n.png" id="6_fmxjb"]
 [ext_resource type="Texture2D" uid="uid://bjsfvqjqvbxpy" path="res://World/Tilemap/arrow_basic_n_small.png" id="7_k1k4v"]
 [ext_resource type="Texture2D" uid="uid://cat223iqrub38" path="res://World/Tilemap/button_round_depth_gradient.png" id="8_3l56h"]
+[ext_resource type="Texture2D" uid="uid://cp1mw21irjbyq" path="res://World/Tilemap/button_round_depth_border.png" id="9_isvle"]
+[ext_resource type="Texture2D" uid="uid://cxorf0u7eth1s" path="res://World/Tilemap/icon_play_outline.png" id="10_ejtm0"]
 
 [node name="MobileButtons" type="CanvasLayer"]
 script = ExtResource("1_ekpl1")
-AlwaysVisible = false
+metadata/_edit_vertical_guides_ = [240.0]
 
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2(32, 216)
@@ -35,13 +37,25 @@ texture_pressed = ExtResource("7_k1k4v")
 action = "jump"
 
 [node name="Run" type="TouchScreenButton" parent="."]
-position = Vector2(384, 144)
+position = Vector2(416, 144)
 scale = Vector2(0.3125, 0.3125)
 texture_normal = ExtResource("8_3l56h")
 action = "run"
 
 [node name="Run2" type="TouchScreenButton" parent="."]
-position = Vector2(32, 64)
+position = Vector2(32, 24)
 scale = Vector2(0.3125, 0.3125)
 texture_normal = ExtResource("8_3l56h")
 action = "run"
+
+[node name="Emote" type="TouchScreenButton" parent="."]
+position = Vector2(424, 48)
+scale = Vector2(0.625, 0.625)
+texture_normal = ExtResource("9_isvle")
+action = "dance"
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2(232, 2)
+scale = Vector2(0.470588, 0.421053)
+texture_normal = ExtResource("10_ejtm0")
+action = "pause"

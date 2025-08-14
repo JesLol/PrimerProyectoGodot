@@ -3204,6 +3204,7 @@ script = ExtResource("1_lo5ox")
 metadata/_edit_vertical_guides_ = [1904.0]
 
 [node name="MobileButtons" parent="." instance=ExtResource("19_xw5lg")]
+AlwaysVisible = false
 
 [node name="Node" type="Node" parent="."]
 
