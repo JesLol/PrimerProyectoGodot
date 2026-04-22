@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd1jsj5jmmyc6"]
+[gd_scene format=3 uid="uid://dd1jsj5jmmyc6"]
 
 [ext_resource type="Script" uid="uid://djkatpaddy8p0" path="res://Door.cs" id="1_p0e35"]
 [ext_resource type="Texture2D" uid="uid://bpf8dajjeit" path="res://World/Tilemap/Door32.png" id="2_fahql"]
@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
 size = Vector2(10, 22)
 
-[node name="Door" type="Area2D"]
+[node name="Door" type="Area2D" unique_id=1114191096]
 script = ExtResource("1_p0e35")
 
-[node name="Door32" type="Sprite2D" parent="."]
+[node name="Door32" type="Sprite2D" parent="." unique_id=2051019036]
 texture = ExtResource("2_fahql")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438434767]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_ab4ky")

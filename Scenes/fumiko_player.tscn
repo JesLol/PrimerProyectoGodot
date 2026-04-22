@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bqx7d5svu3o0w"]
+[gd_scene format=3 uid="uid://bqx7d5svu3o0w"]
 
 [ext_resource type="Script" uid="uid://wu4bx8xk75cf" path="res://FumikoPlayer.cs" id="1_yttw5"]
 [ext_resource type="Texture2D" uid="uid://budmjeln4d0hx" path="res://World/Tilemap/Fumiko-Dead.png" id="2_75he6"]
@@ -149,18 +149,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5afmb"]
 size = Vector2(14, 30)
 
-[node name="FumikoPlayer" type="CharacterBody2D"]
+[node name="FumikoPlayer" type="CharacterBody2D" unique_id=295278138]
 script = ExtResource("1_yttw5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2125974168]
 sprite_frames = SubResource("SpriteFrames_2iudg")
-animation = &"idle"
+animation = &"walking"
+frame_progress = 0.2497601
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645766865]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5afmb")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1986048851]
 limit_left = 0
 limit_top = 0
 limit_right = 1000000

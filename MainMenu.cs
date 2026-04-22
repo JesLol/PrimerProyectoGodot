@@ -59,21 +59,21 @@ public partial class MainMenu : Control
 		GetTree().Quit(); // Cierra el juego
 	}
 	public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("ui-down"))
-        {
-            focusedIndex = (focusedIndex + 1) % menuButtons.GetChildCount();
-            menuButtons.GetChild<Button>(focusedIndex).GrabFocus();
-        }
-        else if (@event.IsActionPressed("ui-up"))
-        {
-            focusedIndex = (focusedIndex - 1 + menuButtons.GetChildCount()) % menuButtons.GetChildCount();
-            menuButtons.GetChild<Button>(focusedIndex).GrabFocus();
-        }
-        else if (@event.IsActionPressed("ui-accept"))
-        {
-            // Llama al método del botón enfocado, por ejemplo, para reanudar el juego
-            menuButtons.GetChild<Button>(focusedIndex).EmitSignal(Button.SignalName.Pressed);
-        }
-    }
+	{
+		if (@event.IsActionPressed("ui-down"))
+		{
+			focusedIndex = (focusedIndex + 1) % menuButtons.GetChildCount();
+			menuButtons.GetChild<Button>(focusedIndex).GrabFocus();
+		}
+		else if (@event.IsActionPressed("ui-up"))
+		{
+			focusedIndex = (focusedIndex - 1 + menuButtons.GetChildCount()) % menuButtons.GetChildCount();
+			menuButtons.GetChild<Button>(focusedIndex).GrabFocus();
+		}
+		else if (@event.IsActionPressed("ui-accept"))
+		{
+			// Llama al método del botón enfocado, por ejemplo, para reanudar el juego
+			menuButtons.GetChild<Button>(focusedIndex).EmitSignal(Button.SignalName.Pressed);
+		}
+	}
 }
