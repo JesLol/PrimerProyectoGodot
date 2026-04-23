@@ -27,14 +27,19 @@ GameManager="*res://GameManager.cs"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
+window/physics_ticks_per_second=120
 
 [dotnet]
 
 project/assembly_name="Prueba CS"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
 
 [input]
 
@@ -113,6 +118,10 @@ ui_fullscreen={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/physics_ticks_per_second=120
 
 [rendering]
 

@@ -162,9 +162,21 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5afmb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1986048851]
+enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 1000000
 limit_bottom = 270
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Sensors" type="Node2D" parent="." unique_id=760983276]
+
+[node name="RayFront" type="RayCast2D" parent="Sensors" unique_id=903701021]
+target_position = Vector2(50, 0)
+
+[node name="RayFloor" type="RayCast2D" parent="Sensors" unique_id=338145921]
+target_position = Vector2(0, 40)
+
+[node name="RayDiagonal" type="RayCast2D" parent="Sensors" unique_id=1204402939]
+target_position = Vector2(30, 30)

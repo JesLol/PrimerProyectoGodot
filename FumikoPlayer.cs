@@ -13,8 +13,17 @@ public partial class FumikoPlayer : CharacterBody2D
 	private bool _firstFlagIsChecked = false;
 	private AnimatedSprite2D anim;
 	private bool wasOnFloorLastFrame = false;
-	private bool isDead = false;
+	public bool isDead = false;
 	private Vector2 _initialPosition;
+	
+	private RayCast2D _rayFront;
+	private RayCast2D _rayDiagonal;
+	private RayCast2D _rayFloor;
+
+	public float[] AiActions = new float[2]; // [0] eje X, [1] Salto
+	public bool IsAiControlled = false;
+
+	public float Reward = 0.0f;
 
 	public override void _Ready()
 	{
@@ -22,27 +31,68 @@ public partial class FumikoPlayer : CharacterBody2D
 		gameManager = GetNode<GameManager>("/root/GameManager");
 		_initialPosition = GlobalPosition;
 		checkpointPosition = GlobalPosition;
+		
+		_rayFront = GetNode<RayCast2D>("Sensors/RayFront");
+		_rayDiagonal = GetNode<RayCast2D>("Sensors/RayDiagonal");
+		_rayFloor = GetNode<RayCast2D>("Sensors/RayFloor");
+
+		IsAiControlled = true;
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		ApplyGravity(delta);
-
-		if (isDead)
+		public override void _PhysicsProcess(double delta)
 		{
-			MoveAndSlide();
-			return;
-		}
+			ApplyGravity(delta);
 
-		Vector2 velocity = Velocity;
-		
-		HandleMovement(ref velocity, delta);
-		HandleJumping(ref velocity);
-		
-		Velocity = velocity;
-		MoveAndSlide();
-		UpdateAnimation(velocity);
-		CheckDeathCollision();
+			if (isDead)
+			{
+				MoveAndSlide();
+				return;
+			}
+
+			Vector2 velocity = Velocity;
+			
+			float inputX = 0;
+			if (IsAiControlled) 
+			{
+				inputX = AiActions[0]; 
+			} 
+			else 
+			{
+				// Control manual
+				inputX = Input.GetAxis("move-left", "move-right");
+			}
+
+			velocity.X = inputX * (Input.IsActionPressed("run") ? RunSpeed : Speed);
+
+			bool wantsToJump = IsAiControlled ? (AiActions[1] > 0.5f) : Input.IsActionJustPressed("jump");
+			
+			if (wantsToJump && IsOnFloor())
+			{
+				velocity.Y = JumpVelocity;
+			}
+			
+			Velocity = velocity;
+			MoveAndSlide();
+			
+			UpdateAnimation(velocity);
+			CheckDeathCollision();
+			
+			if (IsAiControlled && !isDead) 
+			{
+				Reward -= 0.0001f; 
+			}
+		}
+	
+	public float[] GetObservations()
+	{
+		return new float[] 
+		{
+			_rayFront.IsColliding() ? 1.0f : 0.0f,    // ¿Pared enfrente?
+			_rayDiagonal.IsColliding() ? 1.0f : 0.0f, // ¿Hay suelo adelante?
+			_rayFloor.IsColliding() ? 1.0f : 0.0f,    // ¿Estoy tocando el piso?
+			Velocity.X / RunSpeed,                   // Velocidad normalizada X
+			Velocity.Y / 400.0f                      // Velocidad normalizada Y
+		};
 	}
 	
 	private void ApplyGravity(double delta)
@@ -55,26 +105,22 @@ public partial class FumikoPlayer : CharacterBody2D
 
 	private void HandleMovement(ref Vector2 velocity, double delta)
 	{
-		currentSpeed = Speed;
-		if (Input.IsActionPressed("run"))
-		{
-			currentSpeed = RunSpeed;
+		float inputX = 0;
+		
+		if (IsAiControlled) {
+			inputX = AiActions[0]; // La IA enviará un valor entre -1 y 1
+		} else {
+			inputX = Input.GetAxis("move-left", "move-right");
 		}
 
-		velocity.X = 0;
-		if (Input.IsActionPressed("move-left"))
-		{
-			velocity.X -= currentSpeed;
-		}
-		if (Input.IsActionPressed("move-right"))
-		{
-			velocity.X += currentSpeed;
-		}
+		velocity.X = inputX * (Input.IsActionPressed("run") ? RunSpeed : Speed);
 	}
 
 	private void HandleJumping(ref Vector2 velocity)
 	{
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		bool wantsToJump = IsAiControlled ? AiActions[1] > 0.5f : Input.IsActionJustPressed("jump");
+
+		if (wantsToJump && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 		}
@@ -149,6 +195,9 @@ public partial class FumikoPlayer : CharacterBody2D
 	public void RespawnPlayer()
 	{
 		isDead = false;
+		Reward = 0.0f;
+		GD.Print("Jugador reiniciado");
+		GD.Print(Reward);
 		GlobalPosition = _initialPosition; 
 		anim.Play("idle");
 		Velocity = Vector2.Zero;
@@ -167,9 +216,10 @@ public partial class FumikoPlayer : CharacterBody2D
 	public void Die()
 	{
 		if (isDead) { return; }
+		Reward -= 1.0f;
 		isDead = true;
 		Velocity = Vector2.Zero;
 		anim.Play("death");
-		GetTree().CreateTimer(1.5f).Timeout += RespawnPlayer;
+		GetTree().CreateTimer(0f).Timeout += RespawnPlayer;
 	}
 }

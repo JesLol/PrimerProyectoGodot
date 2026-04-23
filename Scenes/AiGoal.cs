@@ -17,8 +17,12 @@ public partial class AiGoal : Area2D
 		if (body is FumikoPlayer player)
 		{
 			GD.Print("¡Meta alcanzada!");
+			player.Reward += 10.0f;
 			// Si SignalName te sigue dando error tras compilar, usa la cadena de texto:
+			var controller = player.GetNode<Node>("AIController2D"); 
+        	controller.Call("reset");
 			EmitSignal(SignalName.PlayerReachedGoal); 
+			GD.Print(player.Reward);
 			player.RespawnPlayer();
 		}
 	}
